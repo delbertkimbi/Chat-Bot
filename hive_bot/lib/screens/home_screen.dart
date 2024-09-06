@@ -17,17 +17,17 @@ class _HomePageState extends State<HomePage> {
     ChatHistoryScreen(),
   ];
   final PageController _pageController = PageController();
-  int _selectedScreen = 0;
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedScreen,
+        currentIndex: _currentIndex,
         elevation: 0,
-        selectedItemColor: Theme.of(context).colorScheme.primary,
+        selectedItemColor:  Theme.of(context).colorScheme.primary,
         onTap: (index) {
           setState(() {
-            _selectedScreen = index;
+            _currentIndex = index;
           });
           _pageController.animateToPage(index,
               duration: const Duration(milliseconds: 300),
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         children: _screens,
         onPageChanged: (value) {
           setState(() {
-            _selectedScreen = value;
+            _currentIndex = value;
           });
         },
       ),
